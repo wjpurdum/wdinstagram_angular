@@ -1,6 +1,10 @@
 "use strict";
 
 (function(){
+  let entries = [
+    {photo_url: "", author: "", body: ""}
+  ]
+
   angular.module("wdinstagram", [
     "ui.router",
     "ngResource"
@@ -61,7 +65,9 @@ function EntryFactoryFunction( $resource ){
 
 function EntryShowControllerFunction(EntryFactory, $stateParams) {
   this.entry = EntryFactory.get({id: $stateParams.id});
-  // this.entry = EntryFactory.entries[]
+  // this.entry = entries.find(entry)=> {
+//   return entry.id == $stateParams.id
+// }
 }
 
 function EntryNewControllerFunction( EntryFactory ){
@@ -107,9 +113,9 @@ function RouterFunction($stateProvider){
   $stateProvider
   .state("entryIndex", {
     url: "/entries",
-    templateUrl: "js/ng-views/index.html",
     controller: "EntryIndexController",
-    controllerAs: "vm"
+    controllerAs: "vm",
+    templateUrl: "js/ng-views/index.html"
   }).state("entryNew", {
     url: "/entries/new",
     templateUrl: "js/ng-views/new.html",
@@ -118,9 +124,9 @@ function RouterFunction($stateProvider){
   })
   .state("entryShow", {
     url: "/entries/:id",
-    templateUrl: "js/ng-views/show.html",
     controller: "EntryShowController",
-    controllerAs: "vm"
+    controllerAs: "vm",
+    templateUrl: "js/ng-views/show.html"
   })
     .state("entryEdit", {
       url: "/entries/:id/edit",

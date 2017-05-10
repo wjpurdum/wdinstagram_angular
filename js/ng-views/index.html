@@ -2,5 +2,7 @@
 
 <div data-ng-repeat="entry in vm.entries">
   <p><a data-ui-sref="entryShow({id: entry.id})">{{entry.author}}</a></p>
+  <p>{{entry.body}}</p>
+  <img ng-src={{entry.photo_url}}>
   <a data-ui-sref="entryEdit({id: entry.id})">Edit</a>
 </div>
