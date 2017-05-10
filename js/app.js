@@ -56,15 +56,24 @@ function EntryFactoryFunction( $resource ){
   // ]
 // }
 // return {entries}
+})
 }
 
 function EntryShowControllerFunction(EntryFactory, $stateParams) {
-  // this.entry = EntryFactory.get({id: $stateParams.id});
-  this.entry = EntryFactory.entries[]
+  this.entry = EntryFactory.get({id: $stateParams.id});
+  // this.entry = EntryFactory.entries[]
 }
 
+function EntryNewControllerFunction( EntryFactory ){
+  this.entry = new EntryFactory();
+  this.create = function(){
+    this.entry.$save()
+  }
+}
+
+
 function EntryIndexControllerFunction(EntryFactory){
-  this.entries = EntryFactory.query(;)
+  this.entries = EntryFactory.query()
   // this.entries = [{
   //     author: "Joe",
   //     photo_url: "http://www.costafarms.com/CostaFarms/Costa-Farms-Succulent-Echeveria-peacockii.jpg?height=257&width=256&scale=both&crop=auto",
